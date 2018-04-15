@@ -58,7 +58,7 @@ However, one significant problem for provenance as it relates to scientific work
 
 This work argues that a \textit{permissioned distributed ledger} is an efficient solution to share workflow provenance between networked peers. The distributed ledger would act as the broker between peers to execute workflows as transactions on the network, and each transaction would be recorded in the ledger as usual. The act of recording the transactions would, in effect, be capturing the root node of the provenance graph, which would be augmented by additional information stored in the transaction record to point to system-specific provenance information. The benefits to this are that transactions in distributed ledgers are (1) shared across the network to establish consensus on their validity and (2) made immutable by encoding the state in a distributed hash list, which insures integrity. Trust among peers is established by cryptographic keys in permissioned ledgers (as opposed to proof of work schemes), so only minor resources are required to join the network. 
 
-The remainder of this article investigates this possibility. Section \ref{background} provides a general overview of provenance as well as the basics behind distributed ledgers. Section \ref{foo} presents the case for using distributed ledgers for this purpose in more detail.
+The remainder of this article investigates this possibility. Section \ref{background} provides a general overview of provenance as well as the basics behind distributed ledgers. Section \ref{case} presents the case for using distributed ledgers for this purpose in more detail.
 
 \section{Background}
 \label{background}
@@ -98,6 +98,7 @@ A smart contract, or simply a contract, in this context is a small piece of code
 There are number of technologies closely related to distributed ledgers. Blockchain data structures are implemented using Merkle trees \cite{merkle_digital_1987} as are other distributed databases and version control systems, such as Git. There is also substantial on-going work to improve on the performance of distributed ledgers and Blockchains in particular. For example, the PHANTOM protocol, based on BlockDAG, alleviates many of the performance issues that are side effects of Nakamoto's original consensus scheme and allows for asynchronous, fast block creation. Other efforts are also investigating the use of Blockchain technologies for provenance capture \cite{richard_brooks_and_anthony_skjellum_using_2017}\cite{worley_scrybe:_nodate}.
 
 \section{Distributed Ledgers for Workflow Provenance}
+\label{case}
 The promise of a permissioned ledger for managing workflow provenance is that a large, secure network of peers can quickly and automatically share provenance information without additional work and in a way that preserves the integrity of the provenance record. Although there might be other means to do accomplish this task, permissioned distributed ledgers have additional properties that map well onto those required of a good provenance record.
 \begin{itemize}
     \item Transaction records, which would describe workflow executions in this case, are immutable. Placement in the ledger requires linking to the previous and next records in the Merkle tree/hash list/Blockchain backing the ledger. Thus the record cannot be changed without changing the entire set of records.
