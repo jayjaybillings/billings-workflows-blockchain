@@ -1,4 +1,4 @@
-\section{Introduction}
+\subsection{Sharing Provenance}
 Consider the following statement about the provenance of a piece of data $A$:
 \begin{displayquote}
     $A$ was generated yesterday using linear regression on $B$ and stored in
@@ -52,23 +52,22 @@ established by cryptographic keys in permissioned ledgers (as opposed to
 proof-of-work schemes), so only minor resources are required to join the
 network.
 
-The remainder of this works investigates this possibility. Section
-\ref{background} provides a general overview of provenance, as well as the
-basics behind distributed ledgers. Section \ref{case} presents the case for using
+The remainder of this section investigates this possibility. Section
+\ref{provenance-background} provides a general overview of provenance, as well
+as the basics behind distributed ledgers. Section \ref{case} presents the case for using
 distributed ledgers for this purpose in more detail.
 
-\section{Background}
+\subsection{Workflow Provenance Background}
 \label{provenance-background}
 
-\subsection{Workflow Provenance}
 The issues around provenance for workflows, including scientific workflows, have
 been thoroughly investigated elsewhere in the literature. Data provenance for
 workflows has been investigated particularly thoroughly in the data science
-community (c.f. \cite{davidson_provenance_2007}), as well as workflow management
-systems for modeling and simulation capture provenance; however, but some
-investigation do so by explicitly generating graph-based provenance
-\cite{pizzi_aiida:_2016}, while others follow a ``log everything'' style
-\cite{billings_eclipse_2017}.
+community (c.f. \cite{davidson_provenance_2007}), as well as with workflow
+management systems for modeling and simulation provenance capture. However,
+some systems capture provenance by explicitly generating graph-based
+provenance models \cite{pizzi_aiida:_2016}, while others follow a ``log
+everything'' style \cite{billings_eclipse_2017}.
 
 Multiple provenance standards exist, most of which are applicable to problems in
 broader scientific domains, as well as workflow science. The PROV Model, for
@@ -109,7 +108,7 @@ common to find a time-forward representation. Some systems, including those in
 \cite{billings_eclipse_2017} and \cite{altintas_provenance_2006}, can use this
 type of provenance record to enable ``fast replays'' of workflows.
 
-\subsection{Distributed Ledgers}
+\subsubsection{Distributed Ledgers}
 Distributed ledgers are linked collections of records about transactions that
 are distributed across a peer-to-peer network without any central authority. The
 Blockchain data structure that forms the basis of the BitCoin cryptocurrency is
@@ -190,7 +189,7 @@ scheme and allows for asynchronous, fast block creation. Other efforts are also
 investigating the use of Blockchain technologies for provenance capture
 \cite{richard_brooks_and_anthony_skjellum_using_2017}\cite{worley_2018}.
 
-\section{Distributed Ledgers for Workflow Provenance}
+\subsection{Distributed Ledgers for Workflow Provenance}
 \label{case}
 The promise of a permissioned ledger for managing workflow provenance is that a
 large, secure network of peers can quickly and automatically share provenance
@@ -231,7 +230,7 @@ These properties also suggest that ledgers would be good for managing provenance
 regardless of whether or not the ledger was distributed. (Trusted peers could be
 queried secretly and their consensus computed locally, for example.)
 
-\subsection{Capture Model}
+\subsubsection{Capture Model}
 In a distributed ledger, workflow management systems would be peers on the
 network, along with clients that represent humans and possibly other service
 nodes, such as nodes for staging data. The latter point makes sense because
@@ -251,7 +250,15 @@ the second case might be more scalable because it requires less compute cycles
 and stores less data. In practice, these options could be used together without
 an obvious downside.
 
-\subsection{Access}
+One interesting case to consider is if the client systems are using the workflow
+ontology for capturing instance metadata and a provenance model such as PROV.
+PROV is RDF-based, just like the workflow ontology, and would merge naturally
+into the instance graph for any workflow described by the ontology because of
+the Anyone can say Anything about Anything principle. This implies that
+providing the whole graph of transactions or providing the information task by
+task (transaction by transaction) are equivalent.
+
+\subsubsection{Access}
 There is little reason to consider the use of a distributed ledger for workflow
 provenance that is not permissioned since presumably all of the peers using the
 network would be at scientific institutions of one form or another. Thus, the
@@ -271,32 +278,3 @@ recorded in the ledger, no state is saved for that transaction, which hides all
 the secret information. This is a nice alternative that makes it possible to
 share some information while saving other information instead of completely
 hidding the ledger behind permissioning or adopting another technology.
-
-\section{Discussion and Conclusion}
-The goal of this work was to demonstrate compatibility between provenance models
-for scientific workflows and distributed ledgers. There might be significant
-benefits to using distributed ledgers for capturing provenance because of how
-easily it enables sharing and search while also mixing in some standardization.
-
-One key question that remains is how well provenance captured in a distributed
-ledger can be used to quickly create new workflows based on the original.
-Duplicating a transaction is a relatively straightforward thing and, in
-principle, executing it might be straightforward as well. However, it might be
-necessary to investigate how the new transaction can point to the original
-transaction from which it was copied. Would it be as simple as adding a
-secondary hash in the saved state that pointed to the parent? Or would it
-require a ``blocktree'' that allowed branching instead of solely a
-blockchain/hash list? In any case, the identity of the parent would seem to be
-important provenance itself!
-
-Another important question is how deep the provenance tree could go.
-Investigating the degree to which contracts could convert provenance information
-to standard ledger state is an interesting topic for further research since it
-would address compatibility issues between workflow and provenance models.
-
-Addressing these and other questions as part of an extensive pilot project would
-be valuable. There are many open source distributed ledger frameworks, including
-the previously mentioned Hyperledger, and a number of commercial solutions that
-could keep the investigation focused on the science rather than extensive
-software engineering. Success in this endeavor could create an entirely new way
-of producing reproducible and reusable scientific workflows.

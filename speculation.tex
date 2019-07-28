@@ -1,0 +1,22 @@
+One key question that remains is how well provenance captured in a distributed
+ledger can be used to quickly create new workflows based on the original.
+Duplicating a transaction is a relatively straightforward thing and, in
+principle, executing it might be straightforward as well. However, it might be
+necessary to investigate how the new transaction can point to the original
+transaction from which it was copied. Would it be as simple as adding a
+secondary hash in the saved state that pointed to the parent? Or would it
+require a ``blocktree'' that allowed branching instead of solely a
+blockchain/hash list? In any case, the identity of the parent would seem to be
+important provenance itself!
+
+Another important question is how deep the provenance tree could go.
+Investigating the degree to which contracts could convert provenance information
+to standard ledger state is an interesting topic for further research since it
+would address compatibility issues between workflow and provenance models.
+
+Addressing these and other questions as part of an extensive pilot project would
+be valuable. There are many open source distributed ledger frameworks, including
+the previously mentioned Hyperledger, and a number of commercial solutions that
+could keep the investigation focused on the science rather than extensive
+software engineering. Success in this endeavor could create an entirely new way
+of producing reproducible and reusable scientific workflows.
