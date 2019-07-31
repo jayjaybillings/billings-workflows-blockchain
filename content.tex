@@ -45,8 +45,8 @@ ledger as usual. The act of recording the transactions would, in effect, be
 capturing the root node of the provenance graph, which would be augmented by
 additional information stored in the transaction record to point to
 system-specific provenance information. The benefits to this are that
-transactions in distributed ledgers are i) shared across the network to
-establish consensus on their validity and ii) made immutable by encoding the
+transactions in distributed ledgers are (i) shared across the network to
+establish consensus on their validity and (ii) made immutable by encoding the
 state in a distributed hash list, which ensures integrity. Trust among peers is
 established by cryptographic keys in permissioned ledgers (as opposed to
 proof-of-work schemes), so only minor resources are required to join the
@@ -162,8 +162,8 @@ work.
 If the primary motivation of such a costly proof scheme is to create trust
 between untrustworthy parties, one obvious alternative is to work only with
 trustworthy nodes. Permissioned networks are formed by nodes identified by
-strong cryptographic keys and allowed to join by permission of other members in
-the network. Reaching consensus in this situation is as simple as making sure
+strong cryptographic keys and are allowed to join by permission of other members
+in the network. Reaching consensus in this situation is as simple as making sure
 that the source of the transaction and its purpose are valid between some
 parties on the network. No incentive is required to check transactions and vouch
 for them in this case beyond membership in the network, which improves
@@ -181,7 +181,7 @@ architectural reasons or security.
 A number of technologies are closely related to distributed ledgers.
 Blockchain data structures are implemented using Merkle trees
 \cite{merkle_digital_1987}, as are other distributed databases and version
-control systems, such as Git. Substantial work is on-going to improve
+control systems, such as Git. Substantial work is ongoing to improve
 on the performance of distributed ledgers and Blockchains in particular. For
 example, the PHANTOM protocol, based on BlockDAG, alleviates many of the
 performance issues that are side effects of Nakamoto's original consensus
@@ -250,13 +250,13 @@ the second case might be more scalable because it requires less compute cycles
 and stores less data. In practice, these options could be used together without
 an obvious downside.
 
-One interesting case to consider is if the client systems are using the workflow
-ontology for capturing instance metadata and a provenance model such as PROV.
-PROV is RDF-based, just like the workflow ontology, and would merge naturally
-into the instance graph for any workflow described by the ontology because of
-the Anyone can say Anything about Anything principle. This implies that
-providing the whole graph of transactions or providing the information task by
-task (transaction by transaction) are equivalent.
+One interesting case to consider is whether the client systems are using the
+workflow ontology for capturing instance metadata and a provenance model such
+as PROV. PROV is RDF-based, just like the workflow ontology, and would merge
+naturally into the instance graph for any workflow described by the ontology
+because of the Anyone can say Anything about Anything principle. This implies
+that providing either the whole graph of transactions or the information task by
+task (transaction by transaction) is equivalent to the other.
 
 \subsubsection{Access}
 There is little reason to consider the use of a distributed ledger for workflow
